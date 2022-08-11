@@ -1,4 +1,4 @@
-package kr.co.iotree.sanghProject;
+package kr.co.iotree.sanghproject;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

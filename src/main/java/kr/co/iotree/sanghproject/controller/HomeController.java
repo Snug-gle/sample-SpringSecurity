@@ -1,4 +1,4 @@
-package kr.co.iotree.sanghProject.controller;
+package kr.co.iotree.sanghproject.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

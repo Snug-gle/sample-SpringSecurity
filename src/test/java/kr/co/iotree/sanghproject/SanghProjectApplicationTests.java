@@ -1,4 +1,4 @@
-package kr.co.iotree.sanghProject;
+package kr.co.iotree.sanghproject;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
