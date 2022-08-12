@@ -21,13 +21,15 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
 	implementation 'javax.servlet:jstl'
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
+	implementation 'org.mariadb.jdbc:mariadb-java-client:3.0.6'
+	// mybatis, mariaDB 추가... jdbc도 필요??
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
-
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 
