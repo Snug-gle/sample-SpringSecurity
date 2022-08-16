@@ -4,7 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.co.iotree.sanghproject.mapper.UserMapper">
-    <select id="selectUserList" resultType="kr.co.iotree.sanghproject.dto.UserDto">
-        select * from User;
+    <select id="getUserList" resultType="kr.co.iotree.sanghproject.vo.UserVo">
+        SELECT *
+        FROM User
     </select>
 </mapper>

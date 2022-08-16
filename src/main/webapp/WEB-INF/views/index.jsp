@@ -26,7 +26,7 @@
             </tr>
         </thead>
         <tbody>
-          <C:forEach var="user" items="${userList}">
+          <C:forEach var="user" items="${user}">
             <tr>
                 <td>${user.id}</td>
                 <td>${user.name}</td>
