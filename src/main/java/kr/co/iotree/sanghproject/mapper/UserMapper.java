@@ -8,14 +8,22 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
 
+    // 신규 회원 생성
+    void insertUser(UserVo userVo);
+
+    // 회원 정보 변경
+    void updateUser(UserVo userVo);
+
+    // 회원 정보 삭제
+    void deleteUser(int id);
+
+    // 회원 정보 조회
+    List<UserVo> getUserById(int id);
+
     // 전체 사용자 조회
     List<UserVo> getUserList();
 
-    // 사용자 생성
 
-    // 사용자 정보 변경
-
-    // 번호(id)를 통한 사용자 정보 조회
 
 
 }

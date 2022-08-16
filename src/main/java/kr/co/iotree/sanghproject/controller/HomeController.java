@@ -15,10 +15,12 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
+    // 회원 목록
     @GetMapping("/")
     public String userList(Model model) {
         List<UserVo> userList = userService.getUserList();
         model.addAttribute("user", userList);
         return "index";
     }
+
 }

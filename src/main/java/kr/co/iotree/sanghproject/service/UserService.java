@@ -13,21 +13,28 @@ public class UserService {
     @Autowired
     private UserMapper userMapper;
 
+    // 신규 회원 생성
+    public void insertUser(UserVo userVo) {
+        userMapper.insertUser(userVo);
+    }
+
+    // 회원 정보 변경
+    public void updateUser(UserVo userVo) {
+        userMapper.updateUser(userVo);
+    }
+
+    // 회원 삭제
+    public void deleteUser(int id) {
+        userMapper.deleteUser(id);
+    }
+
+    // 회원 정보 조회
+    public List<UserVo> getUserById(int id) {
+        return userMapper.getUserById(id);
+    }
+    // 전체 회원 조회
     public List<UserVo> getUserList() {
         return userMapper.getUserList();
     }
 
-/*
-    public void insertUser(UserDto userDto) {
-
-    }
-
-    public void updateUser(UserDto userDto) {
-
-    }
-
-    public UserDto selectUser(int id) {
-        return null;
-    }
-*/
 }

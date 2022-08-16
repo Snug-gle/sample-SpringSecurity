@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <!DOCTYPE html>
@@ -26,7 +26,7 @@
             </tr>
         </thead>
         <tbody>
-          <C:forEach var="user" items="${user}">
+          <c:forEach var="user" items="${user}">
             <tr>
                 <td>${user.id}</td>
                 <td>${user.name}</td>
@@ -38,9 +38,12 @@
                 <td>${user.website}</td>
                 <td>${user.company}</td>
             </tr>
-          </C:forEach>
+          </c:forEach>
         </tbody>
     </table>
+  </div>
+  <div>
+    <a href="<c:url value="/login"/>">로그인</a>
   </div>
 </body>
 </html>
