@@ -8,6 +8,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Home page</title>
+<style>
+table {
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 60px;
+    border-radius: 2px soild black
+  }
+</style>
 </head>
 <body>
   <div>

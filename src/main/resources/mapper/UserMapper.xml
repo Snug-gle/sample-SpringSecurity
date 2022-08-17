@@ -17,7 +17,7 @@
         SET id = #{id},
             name = #{name},
             username = #{username},
-            email = #{email},
+
             password = #{password},
             address = #{address},
             phone = #{phone},

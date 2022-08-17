@@ -9,13 +9,13 @@
 <meta charset="UTF-8">
 </head>
 <body>
- <form id="signForm" action="<c:url value="/user"/>" method="post">
+ <form id="signForm" action="<c:url value="/signup"/>" method="post">
       <div>
-          <label for="id">아이디</label>
+          <label for="id">번호</label>
           <input type="text" id="id" name="id" placeholder="아이디를 입력하세요">
       </div>
       <div>
-        <label for="name">이름</label>
+        <label for="name">아이디</label>
         <input type="text" id="name" name="name">
       </div>
       <div>
@@ -32,7 +32,7 @@
       </div>
       <div>
         <label for="passwordConfirm">비밀번호 확인</label>
-        <input type="password" id="passwordConfirm" name="password" placeholder="비밀번호를 입력하세요">
+        <input type="password" id="passwordConfirm" name="passwordConfirm" placeholder="비밀번호를 입력하세요">
       </div>
       <div>
         <label for="address">주소</label>

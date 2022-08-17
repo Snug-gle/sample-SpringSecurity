@@ -11,28 +11,28 @@
 <body>
  <form id="signForm" action="<c:url value="/user"/>" method="post">
       <div>
-          <label for="userId">아이디</label>
-          <input type="text" id="userId" name="userId" class="form-control"  placeholder="아이디를 입력하세요">
+          <label for="id">번호</label>
+          <input type="text" id="id" name="id" class>
       </div>
       <div>
-        <label for="id">이름</label>
-        <input type="text" id="id" name="id">
+        <label for="name">아이디</label>
+        <input type="text" id="name" name="name">
       </div>
       <div>
         <label for="username">사용자이름(닉네임)</label>
         <input type="text" id="username" name="username">
       </div>
-      <div>
+      <%-- <div>
         <label for="email">이메일</label>
         <input type="email" id="email" name="email" placeholder="이메일을 입력하세요.">
-      </div>
+      </div> --%>
       <div>
           <label for="password">비밀번호</label>
           <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요">
       </div>
       <div>
         <label for="passwordConfirm">비밀번호 확인</label>
-        <input type="password" id="passwordConfirm" name="password" placeholder="비밀번호를 입력하세요">
+        <input type="password" id="passwordConfirm" name="passwordConfirm" placeholder="비밀번호를 입력하세요">
       </div>
       <div>
         <label for="address">주소</label>
@@ -51,7 +51,7 @@
         <input type="text" id="company" name="company" placeholder="회사명을 입력하세요.">
       </div>
       <div>
-          <button type="submit">회원가입</button>
+          <button type="submit">회원정보수정</button>
       </div>
   </form>
 </body>

@@ -32,6 +32,7 @@ public class UserService {
     public List<UserVo> getUserById(int id) {
         return userMapper.getUserById(id);
     }
+
     // 전체 회원 조회
     public List<UserVo> getUserList() {
         return userMapper.getUserList();
