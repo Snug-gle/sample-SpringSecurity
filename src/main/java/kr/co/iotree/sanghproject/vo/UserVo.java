@@ -1,9 +1,10 @@
 package kr.co.iotree.sanghproject.vo;
 
 import lombok.Data;
-
 @Data
 public class UserVo {
+
+    private Long no;
 
     private int id;
     private String name;

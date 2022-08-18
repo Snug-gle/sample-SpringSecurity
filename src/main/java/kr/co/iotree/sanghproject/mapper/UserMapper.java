@@ -9,7 +9,7 @@ import java.util.List;
 public interface UserMapper {
 
     // 신규 회원 생성
-    void insertUser(UserVo userVo);
+    void insertUser(UserVo userVo); // void or int??
 
     // 회원 정보 변경
     void updateUser(UserVo userVo);
