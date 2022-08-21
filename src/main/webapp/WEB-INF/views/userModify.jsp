@@ -13,21 +13,9 @@
  <div>
      <form id="signForm" action="<c:url value="/user"/>" method="post">
           <div>
-              <label for="id">번호</label>
-              <input type="text" id="id" name="id" class>
-          </div>
-          <div>
-            <label for="name">아이디</label>
-            <input type="text" id="name" name="name">
-          </div>
-          <div>
             <label for="username">사용자이름(닉네임)</label>
             <input type="text" id="username" name="username">
           </div>
-          <%-- <div>
-            <label for="email">이메일</label>
-            <input type="email" id="email" name="email" placeholder="이메일을 입력하세요.">
-          </div> --%>
           <div>
               <label for="password">비밀번호</label>
               <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요">

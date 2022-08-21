@@ -22,6 +22,9 @@ public interface UserMapper {
     // 전체 사용자 조회
     List<UserVo> getUserList();
 
-    //회원
+    // 로그인 아이디, 비밀번호 조회
     UserVo getUserByPassword(String name, String password);
+
+    // 회원 가입 시 중복 체크
+    int checkByName(String name);
 }

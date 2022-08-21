@@ -10,15 +10,14 @@
 </head>
 <body>
  <h2>회원 가입 페이지</h2>
+ <c:if test="${checkResult != null}">
+    <p style="color: red;">${message}</p>
+ </c:if>
  <div>
      <form id="signForm" action="<c:url value="/signup"/>" method="post">
           <div>
-              <label for="id">번호</label>
-              <input type="text" id="id" name="id" placeholder="아이디를 입력하세요">
-          </div>
-          <div>
             <label for="name">아이디</label>
-            <input type="text" id="name" name="name">
+            <input type="text" id="name" name="name" placeholder="아이디를 입력하세요.">
           </div>
           <div>
             <label for="username">사용자이름(닉네임)</label>

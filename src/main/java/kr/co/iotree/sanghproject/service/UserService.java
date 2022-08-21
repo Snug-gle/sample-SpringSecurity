@@ -38,4 +38,14 @@ public class UserService {
     public List<UserVo> getUserList() {
         return userMapper.getUserList();
     }
+
+    // 로그인 아이디, 비밀번호 조회
+    public UserVo getUserByPassword(String name, String password) {
+        return userMapper.getUserByPassword(name, password);
+    }
+
+    // 회원 가입 시 중복 체크
+    public int checkByName(String name) {
+        return userMapper.checkByName(name);
+    }
 }

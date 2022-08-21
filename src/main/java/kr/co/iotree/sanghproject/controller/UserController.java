@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -26,10 +28,21 @@ public class UserController {
 
     // 회원 가입 요청
     @PostMapping("/signup")
-    public String signUp(@ModelAttribute UserVo userVo, HttpSession session) {
-        userService.insertUser(userVo);
-        session.setAttribute(SessionConst.LOGIN_USER, userVo.getNum());
-        return "user";
+    public String signUp(@ModelAttribute UserVo userVo, RedirectAttributes RAttr, HttpServletRequest request) {
+
+        int checkResult = userService.checkByName(userVo.getName());
+
+        if (checkResult == 1) {
+            String message = "중복되는 아이디가 있습니다.";
+            RAttr.addFlashAttribute("checkResult", message);
+            return "redirect:/signup";
+        } else {
+            userService.insertUser(userVo);
+            UserVo user = userService.getUserById(userVo.getId());
+            HttpSession session = request.getSession();
+            session.setAttribute(SessionConst.LOGIN_USER, user);
+            return "user";
+        }
     }
 
     // 회원 상세 페이지
