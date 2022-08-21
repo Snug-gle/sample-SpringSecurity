@@ -2,6 +2,7 @@ package kr.co.iotree.sanghproject.service;
 
 import kr.co.iotree.sanghproject.vo.UserVo;
 import kr.co.iotree.sanghproject.mapper.UserMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +30,7 @@ public class UserService {
     }
 
     // 회원 정보 조회
-    public List<UserVo> getUserById(int id) {
+    public UserVo getUserById(int id) {
         return userMapper.getUserById(id);
     }
 
@@ -37,5 +38,4 @@ public class UserService {
     public List<UserVo> getUserList() {
         return userMapper.getUserList();
     }
-
 }

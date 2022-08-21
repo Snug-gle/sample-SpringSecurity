@@ -6,18 +6,17 @@
 <mapper namespace="kr.co.iotree.sanghproject.mapper.UserMapper">
 
     <insert id="insertUser">
-        INSERT INTO User (
-            id, name, username, email, password, address, phone, website, company )
-        VALUES (
-            #{id}, #{name}, #{username}, #{email} ,#{password} ,#{address}, #{phone}, #{website}, #{company} )
+        INSERT INTO User
+            (id, name, username, email, password, address, phone, website, company)
+        VALUES
+            (#{id}, #{name}, #{username}, #{email} ,#{password} ,#{address}, #{phone}, #{website}, #{company})
     </insert>
 
     <update id="updateUser">
         UPDATE User
-        SET id = #{id},
-            name = #{name},
+        SET name = #{name},
             username = #{username},
-
+            email = #{email},
             password = #{password},
             address = #{address},
             phone = #{phone},
@@ -42,4 +41,11 @@
         SELECT *
         FROM User
     </select>
+
+    <select id="getUserByPassword" resultType="kr.co.iotree.sanghproject.vo.UserVo">
+        SELECT *
+        FROM User
+        WHERE name = #{name} AND password = #{password}
+    </select>
+
 </mapper>
