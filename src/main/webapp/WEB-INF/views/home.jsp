@@ -11,11 +11,18 @@
 </head>
 <body>
  <h2>HOME</h2>
-  <div>
-    <a href="<c:url value="/login"/>">로그인 하러가기</a>
-  </div>
-  <div>
-    <a href="<c:url value="/userList"/>">회원 전체 목록</a>
-  </div>
+  <c:choose>
+    <c:when test="${user.id == null}">
+        <a href="<c:url value="/login"/>">로그인 하러가기</a>
+    </c:when>
+    <c:when test="${user.id != null}">
+        <a href="<c:url value="/logout"/>">로그아웃</a>
+    </c:when>
+  </c:choose>
+  <c:if test="${user.grade eq 9}">
+      <div>
+        <a href="<c:url value="/userList"/>">회원 관리 페이지</a>
+      </div>
+  </c:if>
 </body>
 </html>

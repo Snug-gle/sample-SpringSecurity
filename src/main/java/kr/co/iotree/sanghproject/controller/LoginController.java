@@ -24,7 +24,6 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class LoginController {
 
-    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
     @Autowired
     private LoginService loginService;
     @Autowired
@@ -39,7 +38,7 @@ public class LoginController {
     // 로그인 요청 처리
     @PostMapping("/login")
     public String login(@ModelAttribute UserVo userVo, HttpServletRequest request, Model model, RedirectAttributes RAttr) {
-        logger.info("login post");
+
         UserVo user = userService.getUserByPassword(userVo.getName(), userVo.getPassword());
         if (user == null) {
             String message = "아이디와 비밀번호를 확인해주시기 바랍니다.";
@@ -51,13 +50,13 @@ public class LoginController {
         session.setAttribute(SessionConst.LOGIN_USER, user);
 
         model.addAttribute("user", user);
-        return "user";
+        return "userDetail";
     }
 
     // 로그아웃 요청 처리
-    @PostMapping("/logout") // 로그아웃은 왜 포스트 방식 요청일까? 쿼리로 넘기지 않으면 다 POST 방식 일까?
-    public String logout() {
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
         return "home";
     }
-
 }

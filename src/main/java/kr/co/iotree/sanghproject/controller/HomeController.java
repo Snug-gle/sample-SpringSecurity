@@ -23,20 +23,16 @@ public class HomeController {
 
         HttpSession session = request.getSession(false);
 
-        // 세션이 없으면 홈으로
         if (session == null) {
-             return "home";
-        }
 
-        UserVo loginUser = (UserVo) session.getAttribute(SessionConst.LOGIN_USER);
+            return "home";
 
-        // 세션에 회원 데이터가 없으면 home
-        if (loginUser == null) {
+        } else {
+
+            UserVo loginUser = (UserVo) session.getAttribute(SessionConst.LOGIN_USER);
+            model.addAttribute("user", loginUser);
+
             return "home";
         }
-
-        // 세션이 유지되면 유저페이지로 이동
-        model.addAttribute("user",loginUser);
-        return "user";
     }
 }

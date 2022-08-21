@@ -11,10 +11,10 @@
 <body>
  <h2>사용자 수정 페이지</h2>
  <div>
-     <form id="signForm" action="<c:url value="/user"/>" method="post">
+     <form id="signForm" action="<c:url value="/user/modify"/>" method="post" target="<c:url value="/user"/>">
           <div>
             <label for="username">사용자이름(닉네임)</label>
-            <input type="text" id="username" name="username">
+            <input type="text" id="username" name="username" value="${user.username}">
           </div>
           <div>
               <label for="password">비밀번호</label>
@@ -26,19 +26,19 @@
           </div>
           <div>
             <label for="address">주소</label>
-            <input type="text" id="address" name="address" placeholder="주소를 입력하세요.">
+            <input type="text" id="address" name="address" value="${user.address}" placeholder="주소를 입력하세요.">
           </div>
           <div>
             <label for="phone">전화번호</label>
-            <input type="text" id="phone" name="phone" placeholder="전화번호를 입력하세요.">
+            <input type="text" id="phone" name="phone" value="${user.phone}" placeholder="전화번호를 입력하세요.">
           </div>
           <div>
             <label for="website">웹사이트</label>
-            <input type="text" id="website" name="website" placeholder="웹사이트 주소를 입력하세요.">
+            <input type="text" id="website" name="website" value="${user.website}" placeholder="웹사이트 주소를 입력하세요.">
           </div>
           <div>
             <label for="company">회사</label>
-            <input type="text" id="company" name="company" placeholder="회사명을 입력하세요.">
+            <input type="text" id="company" name="company" value="${user.company}" placeholder="회사명을 입력하세요.">
           </div>
           <div>
               <button type="submit">회원정보수정</button>

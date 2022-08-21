@@ -3,7 +3,6 @@ package kr.co.iotree.sanghproject.controller;
 import kr.co.iotree.sanghproject.service.UserService;
 import kr.co.iotree.sanghproject.util.SessionConst;
 import kr.co.iotree.sanghproject.vo.UserVo;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,52 +20,66 @@ public class UserController {
     private UserService userService;
 
     // 회원 가입 화면 요청
-    @GetMapping("/signup")
-    public String singUpForm() {
-        return "signup";
+    @GetMapping("/join")
+    public String joinForm() {
+        return "joinForm";
     }
 
     // 회원 가입 요청
-    @PostMapping("/signup")
-    public String signUp(@ModelAttribute UserVo userVo, RedirectAttributes RAttr, HttpServletRequest request) {
+    @PostMapping("/join")
+    public String join(@ModelAttribute UserVo userVo, RedirectAttributes RAttr, HttpServletRequest request, Model model) {
 
         int checkResult = userService.checkByName(userVo.getName());
 
         if (checkResult == 1) {
             String message = "중복되는 아이디가 있습니다.";
-            RAttr.addFlashAttribute("checkResult", message);
-            return "redirect:/signup";
+            RAttr.addFlashAttribute("message", message);
+
+            return "redirect:/join";
+
         } else {
             userService.insertUser(userVo);
-            UserVo user = userService.getUserById(userVo.getId());
+            UserVo user = userService.getUserByPassword(userVo.getName(),userVo.getPassword());
             HttpSession session = request.getSession();
             session.setAttribute(SessionConst.LOGIN_USER, user);
-            return "user";
+            model.addAttribute("user", user);
         }
+        return "userDetail";
     }
 
     // 회원 상세 페이지
-    @GetMapping("/user")
-    public String userInfo(@ModelAttribute UserVo userVo, HttpSession session, Model model) {
-        UserVo userInfo = userService.getUserById(((UserVo)(session.getAttribute(SessionConst.LOGIN_USER))).getId());
-        model.addAttribute("user", userInfo);
-        return "user";
+    // /user/detail/${user.id}
+    // 회원 번호가 공개되도 괜찮을까? 다른 방법이 있나?
+    @GetMapping("/user/detail/{id}")
+    public String userInfo(@PathVariable int id, Model model) {
+        UserVo user = userService.getUserById(id);
+        model.addAttribute("user", user);
+        return "userDetail";
     }
 
     // 회원 정보 수정 페이지 요청
     @GetMapping("/user/modify")
-    public String modifyFormUser() {
+    public String modifyFormUser(HttpSession session, Model model) {
+
+        UserVo user = (UserVo) session.getAttribute(SessionConst.LOGIN_USER);
+        model.addAttribute("user", user);
+
         return "userModify";
     }
 
     //회원 정보 수정 요청
-    @PostMapping("/user")
-    public String modifyUser(@ModelAttribute UserVo userVo) {
+    @PostMapping("/user/modify")
+    public String modifyUser(@ModelAttribute UserVo userVo, HttpServletRequest request) {
+
+        HttpSession session = request.getSession(false);
         userService.updateUser(userVo);
-        return "user";
+        UserVo userInfo = userService.getUserByPassword(userVo.getName(), userVo.getPassword());
+        session.setAttribute(SessionConst.LOGIN_USER, userInfo);
+
+        return "userDetail";
     }
 
-    // 회원 정보 삭제 페이지 요청
+    // 회원 정보 삭제 요청
     @GetMapping("/user/delete/{id}")
     public String delete(@PathVariable int id) {
         userService.deleteUser(id);

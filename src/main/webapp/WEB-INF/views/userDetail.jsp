@@ -23,28 +23,31 @@
               <table>
                   <thead>
                       <tr>
-                        <th>id</th>
-                        <th>name</th>
-                        <th>username</th>
-                        <th>email</th>
-                        <th>password</th>
-                        <th>address</th>
-                        <th>phone</th>
-                        <th>website</th>
-                        <th>company</th>
+                        <th>사용자이름</th>
+                        <th>이메일</th>
+                        <th>주소</th>
+                        <th>휴대폰</th>
+                        <th>웹사이트</th>
+                        <th>회사</th>
+                        <th>회원등급</th>
                       </tr>
                   </thead>
                   <tbody>
                       <tr>
-                          <td>${user.id}</td>
-                          <td>${user.name}</td>
                           <td>${user.username}</td>
                           <td>${user.email}</td>
-                          <td>${user.password}</td>
                           <td>${user.address}</td>
                           <td>${user.phone}</td>
                           <td>${user.website}</td>
                           <td>${user.company}</td>
+                          <c:choose>
+                              <c:when test="${user.grade eq 1}">
+                                <td>WELCOME</td>
+                              </c:when>
+                              <c:when test="${user.grade eq 9}">
+                                <td>MANAGER</td>
+                              </c:when>
+                          </c:choose>
                       </tr>
                   </tbody>
               </table>
@@ -54,6 +57,9 @@
  </div>
 <div>
   <a href="<c:url value="/user/modify"/>">회원정보수정</a>
+</div>
+<div>
+  <a href="<c:url value="/logout"/>">로그아웃</a>
 </div>
 </body>
 </html>

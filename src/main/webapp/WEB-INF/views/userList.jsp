@@ -29,10 +29,9 @@ th, td {
     <thead>
         <tr>
           <th>id</th>
-          <th>name</th>
-          <th>username</th>
-          <th>email</th>
-          <th>password</th>
+          <th>아이디</th>
+          <th>사용자이름</th>
+          <th>이메일</th>
           <th>address</th>
           <th>phone</th>
           <th>website</th>
@@ -47,7 +46,6 @@ th, td {
             <td>${user.name}</td>
             <td>${user.username}</td>
             <td>${user.email}</td>
-            <td>${user.password}</td>
             <td>${user.address}</td>
             <td>${user.phone}</td>
             <td>${user.website}</td>

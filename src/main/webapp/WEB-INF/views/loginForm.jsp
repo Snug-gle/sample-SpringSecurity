@@ -26,7 +26,7 @@
            </div>
         </form>
     </div>
-        <a href="<c:url value="/signup"/>">회원가입</a>
+        <a href="<c:url value="/join"/>">회원가입</a>
     <c:if test="${message != null}">
         <p style="color: red;">${message}</p>
         <!-- 아이디 찾기 -->

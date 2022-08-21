@@ -13,4 +13,5 @@ public class UserVo {
     private String phone;
     private String website;
     private String company;
+    private int grade;
 }
