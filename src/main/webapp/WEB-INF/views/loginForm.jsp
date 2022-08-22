@@ -15,7 +15,6 @@
            <div>
                <label for="name">아이디</label>
                <input type="text" id="name" name="name" placeholder="아이디를 입력하세요">
-
            </div>
            <div>
                <label for="password">비밀번호</label>
@@ -29,8 +28,6 @@
         <a href="<c:url value="/join"/>">회원가입</a>
     <c:if test="${message != null}">
         <p style="color: red;">${message}</p>
-        <!-- 아이디 찾기 -->
-        <!-- 비밀번호 찾기 -->
     </c:if>
 </body>
 </html>

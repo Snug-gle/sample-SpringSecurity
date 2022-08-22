@@ -4,7 +4,6 @@ import kr.co.iotree.sanghproject.vo.UserVo;
 import kr.co.iotree.sanghproject.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -39,12 +38,7 @@ public class UserService {
     }
 
     // 아이디로 회원 검색
-    public int getByName(String name) {
+    public int getUserByName(String name) {
         return userMapper.getUserByName(name);
-    }
-
-    // 아이디로 회원 정보 조회
-    public UserVo getUserById(int id) {
-        return  userMapper.getUserById(id);
     }
 }

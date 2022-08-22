@@ -2,7 +2,6 @@ package kr.co.iotree.sanghproject.mapper;
 
 import kr.co.iotree.sanghproject.vo.UserVo;
 import org.apache.ibatis.annotations.Mapper;
-
 import java.util.List;
 
 @Mapper
@@ -25,7 +24,4 @@ public interface UserMapper {
 
     // 회원 정보 조회
     int getUserByName(String name);
-
-    // 회원 번호로 정보 조회
-    UserVo getUserById(int id);
 }

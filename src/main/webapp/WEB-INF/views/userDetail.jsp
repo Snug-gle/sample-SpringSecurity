@@ -7,7 +7,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Home page</title>
+<style>
+table {
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 80px;
+}
+th, td {
+    margin : 10px;
+    padding: 10px;
+    border: 1px solid black;
+}
+</style>
 </head>
 <body>
  <h2>사용자 상세 페이지</h2>
