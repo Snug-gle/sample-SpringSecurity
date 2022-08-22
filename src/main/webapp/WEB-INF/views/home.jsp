@@ -19,10 +19,8 @@
         <a href="<c:url value="/logout"/>">로그아웃</a>
     </c:when>
   </c:choose>
-  <c:if test="${user.grade eq 9}">
-      <div>
+    <div>
         <a href="<c:url value="/userList"/>">회원 관리 페이지</a>
-      </div>
-  </c:if>
+    </div>
 </body>
 </html>

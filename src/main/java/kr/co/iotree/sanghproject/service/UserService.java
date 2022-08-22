@@ -2,7 +2,6 @@ package kr.co.iotree.sanghproject.service;
 
 import kr.co.iotree.sanghproject.vo.UserVo;
 import kr.co.iotree.sanghproject.mapper.UserMapper;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,11 +28,6 @@ public class UserService {
         userMapper.deleteUser(id);
     }
 
-    // 회원 정보 조회
-    public UserVo getUserById(int id) {
-        return userMapper.getUserById(id);
-    }
-
     // 전체 회원 조회
     public List<UserVo> getUserList() {
         return userMapper.getUserList();
@@ -44,8 +38,13 @@ public class UserService {
         return userMapper.getUserByPassword(name, password);
     }
 
-    // 회원 가입 시 중복 체크
-    public int checkByName(String name) {
-        return userMapper.checkByName(name);
+    // 아이디로 회원 검색
+    public int getByName(String name) {
+        return userMapper.getUserByName(name);
+    }
+
+    // 아이디로 회원 정보 조회
+    public UserVo getUserById(int id) {
+        return  userMapper.getUserById(id);
     }
 }

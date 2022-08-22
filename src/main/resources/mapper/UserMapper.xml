@@ -5,11 +5,14 @@
 
 <mapper namespace="kr.co.iotree.sanghproject.mapper.UserMapper">
 
-    <insert id="insertUser">
+    <insert id="insertUser" useGeneratedKeys="true">
         INSERT INTO User
-            (name, username, email, password, address, phone, website, company)
+            (id, name, username, email, password, address, phone, website, company)
         VALUES
-            (#{name}, #{username}, #{email} ,#{password} ,#{address}, #{phone}, #{website}, #{company})
+            (#{id}, #{name}, #{username}, #{email} ,#{password} ,#{address}, #{phone}, #{website}, #{company})
+        <selectKey keyProperty="id" resultType="int" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
     </insert>
 
     <update id="updateUser">
@@ -30,12 +33,6 @@
         WHERE id = #{id}
     </delete>
 
-    <select id="getUserById" resultType="kr.co.iotree.sanghproject.vo.UserVo">
-        SELECT *
-        FROM User
-        WHERE id = #{id}
-    </select>
-
     <select id="getUserList" resultType="kr.co.iotree.sanghproject.vo.UserVo">
         SELECT *
         FROM User
@@ -47,10 +44,16 @@
         WHERE name = #{name} AND password = #{password}
     </select>
 
-    <select id="checkByName" resultType="int">
+    <select id="getUserByName" resultType="int">
         SELECT count(*)
         FROM User
         WHERE name = #{name}
+    </select>
+
+    <select id="getUserById" resultType="kr.co.iotree.sanghproject.vo.UserVo">
+        SELECT *
+        FROM User
+        WHERE id = #{id}
     </select>
 
 </mapper>

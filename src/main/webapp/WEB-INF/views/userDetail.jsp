@@ -29,7 +29,6 @@
                         <th>휴대폰</th>
                         <th>웹사이트</th>
                         <th>회사</th>
-                        <th>회원등급</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -40,14 +39,6 @@
                           <td>${user.phone}</td>
                           <td>${user.website}</td>
                           <td>${user.company}</td>
-                          <c:choose>
-                              <c:when test="${user.grade eq 1}">
-                                <td>WELCOME</td>
-                              </c:when>
-                              <c:when test="${user.grade eq 9}">
-                                <td>MANAGER</td>
-                              </c:when>
-                          </c:choose>
                       </tr>
                   </tbody>
               </table>

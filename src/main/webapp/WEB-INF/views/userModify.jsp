@@ -11,10 +11,18 @@
 <body>
  <h2>사용자 수정 페이지</h2>
  <div>
-     <form id="signForm" action="<c:url value="/user/modify"/>" method="post" target="<c:url value="/user"/>">
+     <form id="modifyForm" name="modifyForm" action="<c:url value="/user/modify"/>" method="post" target="<c:url value="/user"/>">
+          <div>
+             <input type="hidden" name="id" value="${user.id}">
+             <input type="hidden" name="name" value="${user.name}">
+           </div>
           <div>
             <label for="username">사용자이름(닉네임)</label>
-            <input type="text" id="username" name="username" value="${user.username}">
+            <input type="text" id="username" name="username" value="${user.username}" required>
+          </div>
+          <div>
+            <label for="email">이메일</label>
+            <input type="text" id="email" name="email" value="${user.email}" readonly>
           </div>
           <div>
               <label for="password">비밀번호</label>
@@ -23,6 +31,7 @@
           <div>
             <label for="passwordConfirm">비밀번호 확인</label>
             <input type="password" id="passwordConfirm" name="passwordConfirm" placeholder="비밀번호를 입력하세요">
+            <p id="confirmMsg" style="color: red;"></p>
           </div>
           <div>
             <label for="address">주소</label>
@@ -41,9 +50,29 @@
             <input type="text" id="company" name="company" value="${user.company}" placeholder="회사명을 입력하세요.">
           </div>
           <div>
-              <button type="submit">회원정보수정</button>
+              <button type="button" onclick="pwConfirm()">회원정보수정</button>
           </div>
       </form>
   </div>
+  <c:if test="${message != null}">
+      <p style="color: red;">${message}</p>
+   </c:if>
+  <script type="text/javascript">
+    function pwConfirm() {
+            var modifyForm = document.modifyForm;
+            var password = document.getElementById('password');
+            var passwordConfirm = document.getElementById('passwordConfirm');
+
+            if ((password.value == "") || (passwordConfirm.value == "")) {
+                confirmMsg.innerHTML = " 비밀번호를 입력하세요";
+                return false;
+            } else if (password.value != passwordConfirm.value) {
+                confirmMsg.innerHTML = " 비밀번호 불일치";
+                return false;
+            } else {
+                modifyForm.submit();
+            }
+        }
+  </script>
 </body>
 </html>

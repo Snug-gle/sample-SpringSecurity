@@ -9,5 +9,4 @@ class SanghProjectApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
