@@ -52,8 +52,9 @@ public class UserController {
 
     //! 회원 정보 수정 요청
     @PostMapping("/user/modify")
-    public String modifyUser(@ModelAttribute UserVo userVo, Model model) {
+    public String modifyUser(@ModelAttribute UserVo userVo, HttpSession session, Model model) {
         userService.updateUser(userVo);
+        session.setAttribute(SessionConst.LOGIN_USER, userVo);
         model.addAttribute("user", userVo);
         return "userDetail";
     }
@@ -65,7 +66,7 @@ public class UserController {
         return "redirect:/userList";
     }
 
-    // 전체 유저 리스트
+    // 전체 유저 리스트 조회
     @GetMapping("/userList")
     public String userList(Model model) {
         List<UserVo> userList = userService.getUserList();
