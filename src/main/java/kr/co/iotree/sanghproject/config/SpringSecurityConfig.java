@@ -33,8 +33,14 @@ public class SpringSecurityConfig {
                 .authorizeHttpRequests((authorize) -> authorize
                                 .anyRequest().authenticated()
                 )
+                // withDefaults()?
                 .httpBasic(withDefaults());
-                //.formLogin(withDefaults());
+//                .formLogin()
+//                    .loginPage("/login")  // 사용자 정의 로그인 페이지
+//                .defaultSuccessUrl("")  // 로그인 성공 후 이동 페이지
+//                .failureUrl("") // 로그인 실패 후 이동 페이지
+
+
         // @formatter:on
         return http.build();
     }

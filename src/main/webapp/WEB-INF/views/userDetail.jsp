@@ -9,10 +9,7 @@
 <meta charset="UTF-8">
 <style>
 table {
-    margin-top: 60px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 80px;
+    margin: 60px auto 80px;
 }
 th, td {
     margin : 10px;
@@ -20,14 +17,15 @@ th, td {
     border: 1px solid black;
 }
 </style>
+    <title></title>
 </head>
 <body>
  <h2>사용자 상세 페이지</h2>
  <div>
      <c:choose>
         <c:when test="${empty(user) }">
-            <div align="center">
-            <h3>회원 정보를 불러올수 없습니다.<h3>
+            <div>
+            <h3>회원 정보를 불러올수 없습니다.</h3>
             </div>
         </c:when>
         <c:otherwise>
