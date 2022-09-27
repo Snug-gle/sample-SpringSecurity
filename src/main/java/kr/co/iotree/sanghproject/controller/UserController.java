@@ -30,7 +30,7 @@ public class UserController {
         int checkResult = userService.getUserByName(userVo.getName());
 
         if (checkResult == 1) {
-            String message = "중복되는 아이디가 있습니다.";
+            String message = "중복되는 사용자가 있습니다.";
             redirectAttributes.addFlashAttribute("message", message);
             return "redirect:/join";
         } else {
@@ -39,7 +39,7 @@ public class UserController {
             session.setAttribute(SessionConst.LOGIN_USER,userVo);
             model.addAttribute("user", userVo);
         }
-        return "userDetail";
+        return "redirect:/userDetail";
     }
 
     // 회원 정보 수정 페이지 요청
@@ -56,7 +56,7 @@ public class UserController {
         userService.updateUser(userVo);
         session.setAttribute(SessionConst.LOGIN_USER, userVo);
         model.addAttribute("user", userVo);
-        return "userDetail";
+        return "redirect:/userDetail";
     }
 
     // 회원 정보 삭제 요청

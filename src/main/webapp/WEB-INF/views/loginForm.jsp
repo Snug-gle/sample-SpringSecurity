@@ -11,10 +11,11 @@
 <body>
  <h2>로그인 페이지</h2>
     <div>
-        <form id="loginForm" action="<c:url value="/login"/>" method="post">
+        <%-- <form id="loginForm" action="<c:url value="login"/>" method="post"> --%>
+        <form id="loginForm" action="/loginProcess" method="post">
            <div>
-               <label for="name">아이디</label>
-               <input type="text" id="name" name="name" placeholder="아이디를 입력하세요">
+               <label for="email">아이디</label>
+               <input type="text" id="name" name="email" placeholder="이메일을 입력하세요">
            </div>
            <div>
                <label for="password">비밀번호</label>

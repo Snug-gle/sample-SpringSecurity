@@ -25,10 +25,10 @@ public class LoginController {
         return "loginForm";
     }
 
-    //! 로그인 요청 처리
+   // 로그인 요청 처리
     @PostMapping("/login")
     public String login(@ModelAttribute UserVo userVo, HttpServletRequest request, Model model, RedirectAttributes redirectAttributes) {
-        UserVo user = userService.getUserByPassword(userVo.getName(), userVo.getPassword());
+        UserVo user = userService.getUserByPassword(userVo.getEmail(), userVo.getPassword());
         if (user == null) {
             String message = "아이디와 비밀번호를 확인해주시기 바랍니다.";
             redirectAttributes.addFlashAttribute("message", message);
@@ -37,6 +37,12 @@ public class LoginController {
         HttpSession session = request.getSession();
         session.setAttribute(SessionConst.LOGIN_USER, user);
         model.addAttribute("user", user);
+        return "redirect:/userDetail";
+    }
+
+    // 로그인 성공 페이지
+    @GetMapping("/userDetail")
+    public String userDetail() {
         return "userDetail";
     }
 

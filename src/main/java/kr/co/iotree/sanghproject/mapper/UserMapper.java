@@ -24,4 +24,7 @@ public interface UserMapper {
 
     // 회원 정보 조회
     int getUserByName(String name);
+
+    // 스프링 시큐리티 로그인 위해 임시 생성
+    UserVo getUserByEmail(String email);
 }

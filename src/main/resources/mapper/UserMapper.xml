@@ -48,4 +48,10 @@
         FROM User
         WHERE name = #{name}
     </select>
+
+    <select id="getUserByEmail" resultType="kr.co.iotree.sanghproject.vo.UserVo">
+        SELECT *
+        FROM User
+        WHERE email = #{email}
+    </select>
 </mapper>

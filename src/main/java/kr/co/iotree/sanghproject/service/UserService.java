@@ -3,6 +3,10 @@ package kr.co.iotree.sanghproject.service;
 import kr.co.iotree.sanghproject.vo.UserVo;
 import kr.co.iotree.sanghproject.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -37,8 +41,10 @@ public class UserService {
         return userMapper.getUserByPassword(name, password);
     }
 
-    // 아이디로 회원 검색
+    // name으로 회원 검색 영향받은 행의 갯수 반환 메서드
     public int getUserByName(String name) {
         return userMapper.getUserByName(name);
     }
+
+
 }
