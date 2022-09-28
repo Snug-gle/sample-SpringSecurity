@@ -17,17 +17,17 @@
   <fieldset>
      <legend>필수입력</legend>
       <div>
-        <label for="name">아이디</label>
-        <input type="text" id="name" name="name" required placeholder="아이디를 입력하세요.">
-      </div>
-      <div>
-        <label for="username">사용자이름(닉네임)</label>
-        <input type="text" id="username" required name="username">
-       </div>
-      <div>
         <label for="email">이메일</label>
         <input type="email" id="email" name="email" required placeholder="이메일을 입력하세요.">
       </div>
+      <div>
+        <label for="name">이름</label>
+        <input type="text" id="name" name="name" required placeholder="실명을 입력하세요.">
+      </div>
+      <div>
+        <label for="username">별칭</label>
+        <input type="text" id="username" required name="username">
+       </div>
       <div>
         <label for="password">비밀번호</label>
         <input type="password" id="password" name="password" required placeholder="비밀번호를 입력하세요">

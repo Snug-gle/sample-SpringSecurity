@@ -16,8 +16,9 @@
 
     <update id="updateUser">
         UPDATE User
-        SET username = #{username},
-            email = #{email},
+        SET email = #{email},
+            name = #{name},
+            username = #{username},
             password = #{password},
             address = #{address},
             phone = #{phone},
@@ -40,13 +41,13 @@
     <select id="getUserByPassword" resultType="kr.co.iotree.sanghproject.vo.UserVo">
         SELECT *
         FROM User
-        WHERE name = #{name} AND password = #{password}
+        WHERE email = #{email} AND password = #{password}
     </select>
 
-    <select id="getUserByName" resultType="int">
+    <select id="getCountUserByEmail" resultType="int">
         SELECT count(*)
         FROM User
-        WHERE name = #{name}
+        WHERE email = #{email}
     </select>
 
     <select id="getUserByEmail" resultType="kr.co.iotree.sanghproject.vo.UserVo">

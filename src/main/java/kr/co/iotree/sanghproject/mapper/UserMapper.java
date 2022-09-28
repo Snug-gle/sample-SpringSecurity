@@ -23,7 +23,7 @@ public interface UserMapper {
     UserVo getUserByPassword(String name, String password);
 
     // 회원 정보 조회
-    int getUserByName(String name);
+    int getCountUserByEmail(String email);
 
     // 스프링 시큐리티 로그인 위해 임시 생성
     UserVo getUserByEmail(String email);

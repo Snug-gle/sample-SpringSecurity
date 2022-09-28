@@ -17,14 +17,14 @@ import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-// Allows customization to the WebSecurity.
-// In most instances users will use EnableWebSecurity and create a Configuration that expose a SecurityFilterChain bean.
 @EnableWebSecurity //@Configuration 포함
 public class SpringSecurityConfig {
 
+    // userService 의존 주입
     @Autowired
     private UserService userService;
 
+    // 기본 설정
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
@@ -49,24 +49,23 @@ public class SpringSecurityConfig {
                 .and()
                     // 로그아웃
                     .logout()
-                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout")) // 로그 아웃 호출할 경우 해당 경로?
                     .logoutSuccessUrl("/")
                     .invalidateHttpSession(true);
-
         return http.build();
     }
 
 
+    // 암호화 설정
     @Bean
     // Spring5 부터는 암호 인코더도 정의해야 한다고 함
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
+    /*@Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
-    }
+    }*/
 
 /*   @Bean
     public UserDetailsManager userDetailsService(AuthenticationManagerBuilder auth) throws Exception {    // InmemoryUserDetailSManager와 차이?

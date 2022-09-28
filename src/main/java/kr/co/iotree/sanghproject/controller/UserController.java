@@ -27,7 +27,7 @@ public class UserController {
     //! 회원 가입 요청
     @PostMapping("/join")
     public String join(@ModelAttribute UserVo userVo, RedirectAttributes redirectAttributes, HttpServletRequest request, Model model) {
-        int checkResult = userService.getUserByName(userVo.getName());
+        int checkResult = userService.getCountUserByName(userVo.getEmail());
 
         if (checkResult == 1) {
             String message = "중복되는 사용자가 있습니다.";

@@ -14,7 +14,7 @@
         <%-- <form id="loginForm" action="<c:url value="login"/>" method="post"> --%>
         <form id="loginForm" action="/loginProcess" method="post">
            <div>
-               <label for="email">아이디</label>
+               <label for="email">이메일</label>
                <input type="text" id="name" name="email" placeholder="이메일을 입력하세요">
            </div>
            <div>

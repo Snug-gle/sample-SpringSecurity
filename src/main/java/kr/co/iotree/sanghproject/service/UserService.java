@@ -41,10 +41,8 @@ public class UserService {
         return userMapper.getUserByPassword(name, password);
     }
 
-    // name으로 회원 검색 영향받은 행의 갯수 반환 메서드
-    public int getUserByName(String name) {
-        return userMapper.getUserByName(name);
+
+    public int getCountUserByName(String email) {
+        return userMapper.getCountUserByEmail(email);
     }
-
-
 }

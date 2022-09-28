@@ -33,8 +33,8 @@ th, td {
               <table>
                   <thead>
                       <tr>
-                        <th>사용자이름</th>
                         <th>이메일</th>
+                        <th>별칭</th>
                         <th>주소</th>
                         <th>휴대폰</th>
                         <th>웹사이트</th>
@@ -43,8 +43,8 @@ th, td {
                   </thead>
                   <tbody>
                       <tr>
-                          <td>${user.username}</td>
                           <td>${user.email}</td>
+                          <td>${user.username}</td>
                           <td>${user.address}</td>
                           <td>${user.phone}</td>
                           <td>${user.website}</td>
