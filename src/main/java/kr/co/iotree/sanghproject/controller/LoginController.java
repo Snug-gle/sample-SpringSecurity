@@ -1,16 +1,14 @@
 package kr.co.iotree.sanghproject.controller;
 
 import kr.co.iotree.sanghproject.service.UserService;
-import kr.co.iotree.sanghproject.util.SessionConst;
 import kr.co.iotree.sanghproject.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -25,8 +23,24 @@ public class LoginController {
         return "loginForm";
     }
 
+    // 로그인 성공 페이지
+    @GetMapping("/userDetail")
+    public String userDetail(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+        UserVo userVo = userService.getUserByPassword(userDetails.getUsername(), userDetails.getPassword());
+        model.addAttribute("user", userVo);
+
+        return "userDetail";
+    }
+
+    // 로그아웃 요청 처리
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "home";
+    }
+    /*
    // 로그인 요청 처리
-    @PostMapping("/login")
+    @PostMapping("/loginProcess")
     public String login(@ModelAttribute UserVo userVo, HttpServletRequest request, Model model, RedirectAttributes redirectAttributes) {
         UserVo user = userService.getUserByPassword(userVo.getEmail(), userVo.getPassword());
         if (user == null) {
@@ -39,17 +53,5 @@ public class LoginController {
         model.addAttribute("user", user);
         return "redirect:/userDetail";
     }
-
-    // 로그인 성공 페이지
-    @GetMapping("/userDetail")
-    public String userDetail() {
-        return "userDetail";
-    }
-
-    // 로그아웃 요청 처리
-    @GetMapping("/logout")
-    public String logout(HttpSession session) {
-        session.invalidate();
-        return "home";
-    }
+*/
 }

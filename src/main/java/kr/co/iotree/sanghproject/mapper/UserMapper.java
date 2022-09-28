@@ -20,7 +20,7 @@ public interface UserMapper {
     List<UserVo> getUserList();
 
     // 로그인 아이디, 비밀번호 조회
-    UserVo getUserByPassword(String name, String password);
+    UserVo getUserByPassword(String email, String password);
 
     // 회원 정보 조회
     int getCountUserByEmail(String email);

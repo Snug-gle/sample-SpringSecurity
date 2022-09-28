@@ -6,12 +6,9 @@
 <mapper namespace="kr.co.iotree.sanghproject.mapper.UserMapper">
     <insert id="insertUser" useGeneratedKeys="true" keyColumn="id">
         INSERT INTO User
-            (name, username, email, password, address, phone, website, company)
+            (name, username, email, password, address, phone, website, company, role)
         VALUES
-            (#{name}, #{username}, #{email} ,#{password} ,#{address}, #{phone}, #{website}, #{company})
-        <selectKey keyProperty="id" resultType="int" order="AFTER">
-            SELECT LAST_INSERT_ID()
-        </selectKey>
+            (#{name}, #{username}, #{email} ,#{password} ,#{address}, #{phone}, #{website}, #{company}, #{role})
     </insert>
 
     <update id="updateUser">

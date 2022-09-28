@@ -9,6 +9,7 @@
     </list>
     <writeAnnotations>
       <writeAnnotation name="org.springframework.beans.factory.annotation.Autowired" />
+      <writeAnnotation name="lombok.experimental.Delegate" />
     </writeAnnotations>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
