@@ -11,18 +11,23 @@
 <body>
  <h2>사용자 수정 페이지</h2>
  <div>
-     <form id="modifyForm" name="modifyForm" action="<c:url value="/user/modify"/>" method="post" target="<c:url value="/user"/>">
+     <form id="modifyForm" name="modifyForm" action="<c:url value="/user/modify"/>" method="post" >
           <div>
+             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
              <input type="hidden" name="id" value="${user.id}">
              <input type="hidden" name="name" value="${user.name}">
            </div>
           <div>
-            <label for="username">사용자이름(닉네임)</label>
-            <input type="text" id="username" name="username" value="${user.username}" required>
-          </div>
-          <div>
             <label for="email">이메일</label>
             <input type="text" id="email" name="email" value="${user.email}" readonly>
+          </div>
+          <div>
+            <label for="name">실명</label>
+            <input type="text" id="username" name="username" value="${user.name}" required>
+            </div>
+          <div>
+            <label for="username">별칭</label>
+            <input type="text" id="username" name="username" value="${user.username}" required>
           </div>
           <div>
               <label for="password">비밀번호</label>

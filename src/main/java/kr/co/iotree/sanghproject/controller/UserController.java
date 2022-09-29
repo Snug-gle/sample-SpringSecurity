@@ -1,15 +1,17 @@
 package kr.co.iotree.sanghproject.controller;
 
+import kr.co.iotree.sanghproject.config.UserDetailsImpl;
 import kr.co.iotree.sanghproject.service.UserService;
-import kr.co.iotree.sanghproject.util.SessionConst;
 import kr.co.iotree.sanghproject.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -26,7 +28,7 @@ public class UserController {
 
     //! 회원 가입 요청
     @PostMapping("/join")
-    public String join(@ModelAttribute UserVo userVo, RedirectAttributes redirectAttributes, HttpServletRequest request, Model model) {
+    public String join(@ModelAttribute UserVo userVo, RedirectAttributes redirectAttributes) {
         int checkResult = userService.getCountUserByEmail(userVo.getEmail());
 
         if (checkResult == 1) {
@@ -35,27 +37,25 @@ public class UserController {
             return "redirect:/join";
         } else {
             userService.insertUser(userVo);
-            HttpSession session = request.getSession();
-            session.setAttribute(SessionConst.LOGIN_USER,userVo);
-            model.addAttribute("user", userVo);
         }
-        return "redirect:/userDetail";
+        return "redirect:/";
     }
 
     // 회원 정보 수정 페이지 요청
     @GetMapping("/user/modify")
-    public String modifyFormUser(HttpSession session, Model model) {
-        UserVo user = (UserVo) session.getAttribute(SessionConst.LOGIN_USER);
-        model.addAttribute("user", user);
-        return "userModify";
+    public String modifyFormUser(Model model) {
+      Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+      UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+
+      model.addAttribute("user", userDetails);
+      return "userModify";
     }
 
     //! 회원 정보 수정 요청
     @PostMapping("/user/modify")
-    public String modifyUser(@ModelAttribute UserVo userVo, HttpSession session, Model model) {
+    public String modifyUser(@ModelAttribute UserVo userVo) {
         userService.updateUser(userVo);
-        session.setAttribute(SessionConst.LOGIN_USER, userVo);
-        model.addAttribute("user", userVo);
+
         return "redirect:/userDetail";
     }
 

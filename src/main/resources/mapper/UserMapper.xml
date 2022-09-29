@@ -6,9 +6,9 @@
 <mapper namespace="kr.co.iotree.sanghproject.mapper.UserMapper">
     <insert id="insertUser" useGeneratedKeys="true" keyColumn="id">
         INSERT INTO User
-            (name, username, email, password, address, phone, website, company, role)
+            (name, username, email, password, address, phone, website, company)
         VALUES
-            (#{name}, #{username}, #{email} ,#{password} ,#{address}, #{phone}, #{website}, #{company}, #{role})
+            (#{name}, #{username}, #{email} ,#{password} ,#{address}, #{phone}, #{website}, #{company})
     </insert>
 
     <update id="updateUser">

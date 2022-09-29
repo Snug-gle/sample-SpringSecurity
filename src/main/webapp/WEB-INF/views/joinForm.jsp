@@ -15,13 +15,14 @@
  </c:if>
  <form id="signForm" action="<c:url value="/join"/>" method="post">
   <fieldset>
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
      <legend>필수입력</legend>
       <div>
         <label for="email">이메일</label>
         <input type="email" id="email" name="email" required placeholder="이메일을 입력하세요.">
       </div>
       <div>
-        <label for="name">이름</label>
+        <label for="name">실명</label>
         <input type="text" id="name" name="name" required placeholder="실명을 입력하세요.">
       </div>
       <div>

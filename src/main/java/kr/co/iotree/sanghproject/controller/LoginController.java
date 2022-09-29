@@ -1,15 +1,15 @@
 package kr.co.iotree.sanghproject.controller;
 
+import kr.co.iotree.sanghproject.config.UserDetailsImpl;
 import kr.co.iotree.sanghproject.service.UserService;
 import kr.co.iotree.sanghproject.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import javax.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class LoginController {
@@ -23,9 +23,13 @@ public class LoginController {
         return "loginForm";
     }
 
-    // 로그인 성공 페이지
+    // 회원 정보 상세 페이지 - 로그인, 회원 가입, 정보 수정 성공 시 이동
+    // 코드를 더 줄일 수 있을 거 같은데?
     @GetMapping("/userDetail")
-    public String userDetail(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+    public String userDetail(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+
         UserVo userVo = userService.getUserByPassword(userDetails.getUsername(), userDetails.getPassword());
         model.addAttribute("user", userVo);
 
@@ -33,25 +37,8 @@ public class LoginController {
     }
 
     // 로그아웃 요청 처리
-    @GetMapping("/logout")
-    public String logout(HttpSession session) {
-        session.invalidate();
-        return "home";
+    @PostMapping("/logout")
+    public String logout() {
+        return "redirect:/";
     }
-    /*
-   // 로그인 요청 처리
-    @PostMapping("/loginProcess")
-    public String login(@ModelAttribute UserVo userVo, HttpServletRequest request, Model model, RedirectAttributes redirectAttributes) {
-        UserVo user = userService.getUserByPassword(userVo.getEmail(), userVo.getPassword());
-        if (user == null) {
-            String message = "아이디와 비밀번호를 확인해주시기 바랍니다.";
-            redirectAttributes.addFlashAttribute("message", message);
-            return "redirect:/login";
-        }
-        HttpSession session = request.getSession();
-        session.setAttribute(SessionConst.LOGIN_USER, user);
-        model.addAttribute("user", user);
-        return "redirect:/userDetail";
-    }
-*/
 }
