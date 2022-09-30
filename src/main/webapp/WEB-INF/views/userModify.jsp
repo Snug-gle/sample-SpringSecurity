@@ -23,7 +23,7 @@
           </div>
           <div>
             <label for="name">실명</label>
-            <input type="text" id="username" name="username" value="${user.name}" required>
+            <input type="text" id="name" name="name" value="${user.name}" required>
             </div>
           <div>
             <label for="username">별칭</label>

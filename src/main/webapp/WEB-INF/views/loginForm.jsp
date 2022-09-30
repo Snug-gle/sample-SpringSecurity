@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 </head>
 <body>
- <h2>로그인 페이지</h2>
+ <h2>로그인</h2>
     <div>
         <form id="loginForm" action="/loginProcess" method="post">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
@@ -26,7 +26,9 @@
            </div>
         </form>
     </div>
+    <div>
         <a href="<c:url value="/join"/>">회원가입</a>
+    </div>
     <c:if test="${message != null}">
         <p style="color: red;">${message}</p>
     </c:if>
