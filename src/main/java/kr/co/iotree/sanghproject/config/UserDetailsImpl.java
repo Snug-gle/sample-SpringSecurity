@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class UserDetailsImpl implements UserDetails {
-    // !왜 final을 추천할까? update시 영향을 받을까?
+
     private final UserVo userVo;
 
     public UserDetailsImpl(UserVo userVo) {

@@ -49,14 +49,14 @@ th, td {
             <td>${user.phone}</td>
             <td>${user.website}</td>
             <td>${user.company}</td>
-            <td><a href="<c:url value="/user/delete/${user.id}"/>">회원삭제</a></td>
+            <td><a href="<c:url value="/admin/delete/${user.id}"/>">회원삭제</a></td>
         </tr>
       </c:forEach>
     </tbody>
 </table>
 </div>
 <div>
-<a href="<c:url value="/"/>">홈으로</a>
+<a href="<c:url value="/user/home"/>">홈으로</a>
 </div>
 </body>
 </html>

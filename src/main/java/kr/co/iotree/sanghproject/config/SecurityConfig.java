@@ -27,11 +27,12 @@ public class SecurityConfig {
                 .loginProcessingUrl("/loginProcess")
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/userDetail")
+                .defaultSuccessUrl("/user/home")
                 .failureUrl("/");
 
         // 로그아웃
         http.logout()
+                .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
                 .invalidateHttpSession(true);
 
