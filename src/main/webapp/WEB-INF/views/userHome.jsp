@@ -16,9 +16,6 @@
     <div>
         <a href="<c:url value="/admin/userList"/>">전체 회원 정보 보기</a>
     </div>
-    <div>
-        <a href="#" onclick="document.getElementById('logout').submit();">로그 아웃</a>
-    </div>
     <form id="logout" action="/logout" method="post">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <input type="submit" value="로그아웃">
