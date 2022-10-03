@@ -44,11 +44,6 @@ public class UserService implements UserDetailsService {
         return userMapper.getUserList();
     }
 
-    // 로그인 아이디, 비밀번호 조회
-    public UserVo getUserByPassword(String email, String password) {
-        return userMapper.getUserByPassword(email, password);
-    }
-
     // 이메일로 회원 조회
     public UserVo getUserByEmail(String email) {
         return userMapper.getUserByEmail(email);

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <!DOCTYPE html>
 <html>
@@ -57,10 +56,13 @@ th, td {
      </c:choose>
  </div>
 <div>
-  <a href="<c:url value="/user/modify"/>">회원정보수정</a>
+    <button onclick="location.href='<c:url value="/user/modify"/>';">회원정보수정</button>
 </div>
 <div>
-  <a href="<c:url value="/logout"/>">로그아웃</a>
+    <form action="/logout" method="post">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+        <input type="submit" value="로그아웃">
+    </form>
 </div>
 </body>
 </html>

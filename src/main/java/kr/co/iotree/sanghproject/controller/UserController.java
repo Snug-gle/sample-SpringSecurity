@@ -40,10 +40,9 @@ public class UserController {
         } else {
             userService.insertUser(userVo);
         }
-        return "redirect:/";
+        return "redirect:/user/home";
     }
 
-    // provider 에서 credentials가 null이 됨??
     // 회원 상세 정보 페이지
     @GetMapping("/user/userDetail")
     public String userDetail(Model model) {

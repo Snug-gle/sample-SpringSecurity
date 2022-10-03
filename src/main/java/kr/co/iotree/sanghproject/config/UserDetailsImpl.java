@@ -33,6 +33,7 @@ public class UserDetailsImpl implements UserDetails {
         return userVo.getEmail();
     }
 
+    // 1년 이상 로그인을 하지 않으면
     @Override
     public boolean isAccountNonExpired() {
         return true;

@@ -19,12 +19,9 @@ public interface UserMapper {
     // 전체 사용자 조회
     List<UserVo> getUserList();
 
-    // 로그인 아이디, 비밀번호 조회
-    UserVo getUserByPassword(String email, String password);
-
     // 회원 정보 조회
     int getCountUserByEmail(String email);
 
-    // 스프링 시큐리티 로그인 위해 임시 생성
+    // email로 회원 정보 조회
     UserVo getUserByEmail(String email);
 }

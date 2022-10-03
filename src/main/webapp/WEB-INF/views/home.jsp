@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html>
 <html>
@@ -12,7 +12,15 @@
 <body>
  <h2>안녕하세요</h2>
     <div>
-        <a href="<c:url value="/login"/>">로그인 하러가기</a>
+        <button onclick="location.href='<c:url value="/login"/>';">로그인</button>
+    </div>
+    <security:authorize access="isAuthenticated()">
+    <div>
+     <form action="/logout" method="post">
+         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+         <input type="submit" value="로그아웃">
+     </form>
+    </security:authorize>
     </div>
 </body>
 </html>

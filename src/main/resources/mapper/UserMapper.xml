@@ -35,12 +35,6 @@
         FROM User
     </select>
 
-    <select id="getUserByPassword" resultType="kr.co.iotree.sanghproject.vo.UserVo">
-        SELECT *
-        FROM User
-        WHERE email = #{email} AND password = #{password}
-    </select>
-
     <select id="getCountUserByEmail" resultType="int">
         SELECT count(*)
         FROM User

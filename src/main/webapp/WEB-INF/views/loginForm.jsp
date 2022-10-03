@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <!DOCTYPE html>
 <html>
@@ -27,7 +26,7 @@
         </form>
     </div>
     <div>
-        <a href="<c:url value="/join"/>">회원가입</a>
+        <button onclick="location.href='<c:url value="/join"/>';">회원가입</button>
     </div>
     <c:if test="${message != null}">
         <p style="color: red;">${message}</p>
