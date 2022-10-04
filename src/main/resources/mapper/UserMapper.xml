@@ -13,10 +13,10 @@
 
     <update id="updateUser">
         UPDATE User
-        SET email = #{email},
-            name = #{name},
+        SET name = #{name},
             username = #{username},
             password = #{password},
+            email = #{email},
             address = #{address},
             phone = #{phone},
             website = #{website},

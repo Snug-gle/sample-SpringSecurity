@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html>
 <html>
@@ -8,7 +9,7 @@
 <meta charset="UTF-8">
 </head>
 <body>
- <h2>로그인</h2>
+ <h2>로그인이 필요합니다.</h2>
     <div>
         <form id="loginForm" action="/loginProcess" method="post">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">

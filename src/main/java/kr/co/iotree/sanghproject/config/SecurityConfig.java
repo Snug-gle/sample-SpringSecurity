@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
@@ -12,11 +12,15 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    // Http Request 관련 Web 보안 설정
+    // HttpSecurity : It allows configuring web based security for specific http requests.
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        // cookieHttpOnly=false : JavaScript가 읽을 수 있도록 하는 데 필요.
+        // JavaScript로 쿠키를 직접 읽는 기능이 필요하지 않은 경우 보안을 향상하기 위해 cookieHttpOnly=false를 생략하는 것이 좋으며
+        // 대신 new CookieCsrfTokenRepository()를 사용
         http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
 
+        // authorizeHttpRequest() : Allows restricting access based upon the HttpServletRequest using RequestMatcher implementations (i.e. via URL patterns).
         http.authorizeHttpRequests()    //authorizeRequest 보다 추천 https://docs.spring.io/spring-security/reference/servlet/authorization/authorize-http-requests.html
                 .antMatchers("/", "/login", "/join").permitAll()
                 .anyRequest().authenticated();
@@ -41,7 +45,7 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        return new BCryptPasswordEncoder();
     }
 
     @Bean

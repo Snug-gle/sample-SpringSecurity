@@ -27,8 +27,8 @@ th, td {
     <thead>
         <tr>
           <th>id</th>
-          <th>아이디</th>
-          <th>사용자이름</th>
+          <th>실명</th>
+          <th>별칭</th>
           <th>이메일</th>
           <th>address</th>
           <th>phone</th>

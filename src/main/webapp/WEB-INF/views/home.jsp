@@ -11,9 +11,11 @@
 </head>
 <body>
  <h2>안녕하세요</h2>
+    <security:authorize access="isAnonymous()">
     <div>
         <button onclick="location.href='<c:url value="/login"/>';">로그인</button>
     </div>
+    </security:authorize>
     <security:authorize access="isAuthenticated()">
     <div>
      <form action="/logout" method="post">

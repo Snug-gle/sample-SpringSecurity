@@ -33,6 +33,7 @@ th, td {
                   <thead>
                       <tr>
                         <th>이메일</th>
+                        <th>실명</th>
                         <th>별칭</th>
                         <th>주소</th>
                         <th>휴대폰</th>
@@ -43,6 +44,7 @@ th, td {
                   <tbody>
                       <tr>
                           <td>${user.email}</td>
+                          <td>${user.name}</td>
                           <td>${user.username}</td>
                           <td>${user.address}</td>
                           <td>${user.phone}</td>

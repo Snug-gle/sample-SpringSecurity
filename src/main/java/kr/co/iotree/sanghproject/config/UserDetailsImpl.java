@@ -16,8 +16,6 @@ public class UserDetailsImpl implements UserDetails {
         this.userVo = userVo;
     }
 
-    // singletonList?? 메모리 절약을 위해 단일 요소 혹은 요소가 빈 경우 Arrays.asList 보다 Collections.singletonList를 추천
-    // java.util.Arrays와 java.util.ArrayList 차이 주말에 봐둘 것
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singletonList(new SimpleGrantedAuthority("USER"));
