@@ -7,8 +7,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import java.util.List;
 
 @Controller
@@ -33,7 +37,7 @@ public class UserController {
     @PostMapping("/join")
     public String join(@ModelAttribute UserVo userVo, RedirectAttributes redirectAttributes) {
         int checkResult = userService.getCountUserByEmail(userVo.getEmail());
-        if (checkResult == 1) {
+        if (checkResult > 0) {
             String message = "중복되는 사용자가 있습니다.";
             redirectAttributes.addFlashAttribute("message", message);
             return "redirect:/join";
@@ -47,7 +51,8 @@ public class UserController {
     @GetMapping("/user/userDetail")
     public String userDetail(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserVo userVo = userService.getUserByEmail(authentication.getName());
+        UserVo userVo = (UserVo)authentication.getPrincipal();
+        userVo = userService.getUserByEmail(userVo.getEmail());
         model.addAttribute("user", userVo);
         return "userDetail";
     }
@@ -56,7 +61,8 @@ public class UserController {
     @GetMapping("/user/modify")
     public String modifyFormUser(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserVo userVo = userService.getUserByEmail(authentication.getName());
+        UserVo userVo = (UserVo)authentication.getPrincipal();
+        userVo = userService.getUserByEmail(userVo.getEmail());
         model.addAttribute("user", userVo);
         return "userModify";
     }

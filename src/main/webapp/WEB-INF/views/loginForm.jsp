@@ -12,7 +12,7 @@
  <h2>로그인이 필요합니다.</h2>
     <div>
         <form id="loginForm" action="/loginProcess" method="post">
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+           <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
            <div>
                <label for="email">이메일</label>
                <input type="text" id="name" name="email" placeholder="이메일을 입력하세요">

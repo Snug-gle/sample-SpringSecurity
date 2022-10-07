@@ -15,11 +15,6 @@ public class SecurityConfig {
     // HttpSecurity : It allows configuring web based security for specific http requests.
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        // cookieHttpOnly=false : JavaScript가 읽을 수 있도록 하는 데 필요.
-        // JavaScript로 쿠키를 직접 읽는 기능이 필요하지 않은 경우 보안을 향상하기 위해 cookieHttpOnly=false를 생략하는 것이 좋으며
-        // 대신 new CookieCsrfTokenRepository()를 사용
-        http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
-
         // authorizeHttpRequest() : Allows restricting access based upon the HttpServletRequest using RequestMatcher implementations (i.e. via URL patterns).
         http.authorizeHttpRequests()    //authorizeRequest 보다 추천 https://docs.spring.io/spring-security/reference/servlet/authorization/authorize-http-requests.html
                 .antMatchers("/", "/login", "/join").permitAll()
